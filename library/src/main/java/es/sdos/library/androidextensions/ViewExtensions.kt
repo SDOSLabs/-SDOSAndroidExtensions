@@ -2,6 +2,7 @@ package es.sdos.library.androidextensions
 
 import android.animation.ObjectAnimator
 import android.content.Context.INPUT_METHOD_SERVICE
+import android.content.ContextWrapper
 import android.content.res.TypedArray
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
@@ -9,6 +10,7 @@ import android.graphics.drawable.RippleDrawable
 import android.os.Handler
 import android.text.TextUtils
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.View
 import android.view.View.*
 import android.view.ViewGroup
@@ -23,6 +25,7 @@ import androidx.annotation.*
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import androidx.fragment.app.FragmentActivity
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 
@@ -139,6 +142,19 @@ fun View.animateAlpha(visible: Boolean, duration: Long = DURATION_SHORT) {
         this.duration = duration
         start()
     }
+}
+
+fun View.getLayoutInflater(): LayoutInflater = LayoutInflater.from(this.context)
+
+fun View.getActivity(): FragmentActivity? {
+    var context = this.context
+    while (context is ContextWrapper) {
+        if (context is FragmentActivity) {
+            return context
+        }
+        context = context.baseContext
+    }
+    return null
 }
 //endregion
 
