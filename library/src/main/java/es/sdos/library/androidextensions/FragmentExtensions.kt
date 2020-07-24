@@ -58,3 +58,8 @@ inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
         commit()
     }
 }
+
+/**
+ * Return the activity if is active or return null in otherwise
+ */
+fun Fragment.getActivityIsActive() = activity?.isActive()
