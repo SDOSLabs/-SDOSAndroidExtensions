@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SDOSAndroidExtensions</string>
+
+    <string name="main__bye_world">Hello World!</string>
+    <string name="main__hello_world">Hello World!</string>
+    <string name="main__change_text">Change text</string>
+</resources>
